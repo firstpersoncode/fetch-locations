@@ -13,7 +13,7 @@ class Locations:
         host = "127.0.0.1"
         user = "root"
         password = "password"
-        db = "locations"
+        db = "rusaha-locations"
         self.con = pymysql.connect(host=host,
                                     user=user,
                                     password=password,
@@ -73,8 +73,8 @@ class Locations:
 
     def getAll(self, limit, page):
         offset = (page - 1) * limit
-        sql = "{province} {kabupaten} {kecamatan} {kelurahan} {orderBy} {limitBy}".format(
-            province="SELECT lid, name FROM `province` UNION ALL",
+        sql = "{provinsi} {kabupaten} {kecamatan} {kelurahan} {orderBy} {limitBy}".format(
+            provinsi="SELECT lid, name FROM `provinsi` UNION ALL",
             kabupaten="SELECT lid, name FROM `kabupaten` UNION ALL",
             kecamatan="SELECT lid, name FROM `kecamatan` UNION ALL",
             kelurahan="SELECT lid, name FROM `kelurahan`",
