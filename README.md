@@ -16,7 +16,7 @@ $ python3 main.py
 ---
 #### Get the data with params page and limit:
 ```
-$ curl http://localhost:6500/v1/locations/?page=1&limit=15
+$ curl http://localhost:6500/locations/?page=1&limit=15
 ```
 ---
 #### Response:
@@ -89,7 +89,7 @@ $ curl http://localhost:6500/v1/locations/?page=1&limit=15
 ---
 #### Get the data with specific location (provinsi, kabupaten, kecamatan, kelurahan):
 ```
-$ curl http://localhost:6500/v1/locations/kecamatan?page=2&limit=15
+$ curl http://localhost:6500/locations/kecamatan?page=2&limit=15
 ```
 ---
 #### Response:
