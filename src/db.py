@@ -23,7 +23,7 @@ class Locations:
         self.cur = self.con.cursor()
 
     def set(self, table):
-        file = "app/data/{table}.json".format(table=table)
+        file = "src/data/{table}.json".format(table=table)
         dataJSON = readFileJSON(file)
 
         try:
@@ -31,20 +31,23 @@ class Locations:
             self.cur.execute(drop_table)
             create_table = "CREATE TABLE IF NOT EXISTS `{table}` ({id}, {lid}, {name}, {pk})".format(
                 table=table,
-                id="`id` INT UNSIGNED NOT NULL AUTO_INCREMENT",
+                id="`id` INT NOT NULL AUTO_INCREMENT",
                 lid="`lid` VARCHAR(255) NOT NULL",
                 name="`name` VARCHAR(255) NOT NULL",
-                pk="CONSTRAINT `pk_{table}` PRIMARY KEY (id)".format(table=table)
+                pk="PRIMARY KEY (`id`)"
             )
 
             self.cur.execute(create_table)
+
             for item in dataJSON:
 
-                insert = "INSERT INTO `{table}` (`lid`, `name`) VALUES ({lid}, {name})".format(
+                insert = "INSERT INTO `{table}` (`lid`, `name`) VALUES ({lid}, \"{name}\")".format(
                     table=table,
                     lid=item.get("id"),
                     name=item.get("name")
                 )
+
+                print(insert, "\n===============================================================")
 
                 self.cur.execute(insert)
 
