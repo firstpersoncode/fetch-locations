@@ -89,4 +89,4 @@ $ curl http://localhost:6500/v1/locations/?page=1&limit=15
 
 > source data:
 - [mining-locations](https://github.com/firstpersoncode/mining-locations)
-- [rajaapi.com](https://rajaapi.com/)
+- [docs.rajaapi.com](https://docs.rajaapi.com/)
