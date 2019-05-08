@@ -10,7 +10,7 @@ CORS(app, supports_credentials=True)
 
 # LOCATIONS
 
-locations = Blueprint('locations', __name__, url_prefix='/v1/locations')
+locations = Blueprint('locations', __name__, url_prefix='/locations')
 
 def getParams(args):
     page = args.get('page', 1)
@@ -38,16 +38,16 @@ def getLocations():
         content_type='application/json'
     )
 
-@locations.route('/province', methods=['GET'])
+@locations.route('/provinsi', methods=['GET'])
 def getProvince():
     page, limit = getParams(request.args)
 
     db = Locations()
-    province = db.get("province", int(limit), int(page))
+    provinsi = db.get("provinsi", int(limit), int(page))
 
     return Response(
         json.dumps({
-            'data': province
+            'data': provinsi
         }, indent=4, sort_keys=True),
         status=200,
         content_type='application/json'
@@ -98,14 +98,14 @@ def getKelurahan():
         content_type='application/json'
     )
 
-@locations.route('/province/set', methods=['GET'])
+@locations.route('/provinsi/set', methods=['GET'])
 def setProvince():
     db = Locations()
-    province = db.set("province")
+    provinsi = db.set("provinsi")
 
     return Response(
         json.dumps({
-            'data': province
+            'data': provinsi
         }, indent=4, sort_keys=True),
         status=200,
         content_type='application/json'
